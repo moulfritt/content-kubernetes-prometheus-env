@@ -6,7 +6,6 @@ pipeline {
     parameters {
         choice(name: 'Action', choices: ['Deploy', 'Delete'], description: "What do you want ?")
     }
-    echo "delete resource value: ${delete_resource}"
     stages {
         stage('Deploy Prometheus') {
             steps {
