@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
 delete_resource = false
 
+environment
+
 pipeline {
     agent any
     parameters {
@@ -9,12 +11,12 @@ pipeline {
     stages {
         stage('Deploy Prometheus') {
             steps {
-                script {
-                    if (${params.Action}) {
-                        delete_resource = true
-                        echo "delete resource value: ${delete_resource}"
-                    }
-                }
+//                script {
+//                    if ("${environment.Action}" == "Delete") {
+//                        delete_resource = true
+//                        echo "delete resource value: ${delete_resource}"
+//                    }
+//                }
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'prometheus/namespaces.yml',
