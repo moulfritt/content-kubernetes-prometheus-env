@@ -1,3 +1,5 @@
+choice(name: 'Action', choices:"Deploy\nDelete", description: "What do you want ?")
+
 pipeline {
     agent any
     environment {
