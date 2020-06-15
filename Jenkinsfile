@@ -19,7 +19,7 @@ pipeline {
                 )
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
-                    cconfigs: 'prometheus/prometheus-config-map.yml',
+                    configs: 'prometheus/prometheus-config-map.yml',
                     enableConfigSubstitution: true
                 )
                 kubernetesDeploy(
