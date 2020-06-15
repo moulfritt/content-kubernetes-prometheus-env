@@ -32,11 +32,6 @@ pipeline {
                     configs: 'prometheus/prometheus-service.yml',
                     enableConfigSubstitution: true
                 )
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube.yml',
-                    enableConfigSubstitution: true
-                )
             }
         }
     }
