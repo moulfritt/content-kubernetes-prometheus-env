@@ -10,10 +10,10 @@ pipeline {
         stage('Deploy Prometheus') {
             steps {
                 script {
-//                    if ("${environment.Action}" == "Delete") {
-//                        delete_resource = true
+                    if (expression {params.Action} == "Delete") {
+                        delete_resource = true
                         echo "delete resource value: ${params.Action}"
-//                    }
+                    }
                 }
 
                 kubernetesDeploy(
