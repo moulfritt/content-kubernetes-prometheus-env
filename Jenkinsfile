@@ -1,38 +1,46 @@
-choice(name: 'Action', choices:"Deploy\nDelete", description: "What do you want ?")
+#!/usr/bin/env groovy
+delete_resource = false
 
 pipeline {
     agent any
-    environment {
-        //be sure to replace "willbla" with your own Docker Hub username
-        DOCKER_IMAGE_NAME = "fbruslon/train-schedule"
+    parameters {
+        choice(name: 'Action', choices: ['Deploy', 'Delete'], description: "What do you want ?")
     }
     stages {
         stage('Deploy Prometheus') {
             steps {
+                if ("${params.Action}" == Delete) {
+                    delete_resource = true
+                }
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'prometheus/namespaces.yml',
-                    enableConfigSubstitution: true
+                    enableConfigSubstitution: true,
+                    deleteResource: ${delete_resource}
                 )
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'prometheus/prometheus-config-map.yml',
-                    enableConfigSubstitution: true
+                    enableConfigSubstitution: true,
+                    deleteResource: ${delete_resource}
                 )
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'prometheus/prometheus-deployment.yml',
-                    enableConfigSubstitution: true
+                    enableConfigSubstitution: true,
+                    deleteResource: ${delete_resource}
                 )
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'prometheus/prometheus-service.yml',
-                    enableConfigSubstitution: true
+                    enableConfigSubstitution: true,
+                    deleteResource: ${delete_resource}
                 )
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'prometheus/clusterRole.yml',
-                    enableConfigSubstitution: true
+                    enableConfigSubstitution: true,
+                    deleteResource: ${delete_resource}
                 )
             }
         }
