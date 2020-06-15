@@ -2,8 +2,7 @@
 delete_resource = true
 
 
-pipeline {
-    agent any
+node {
     parameters {
         choice(name: 'Action', choices: ['Deploy', 'Delete'], description: "What do you want ?")
     }
