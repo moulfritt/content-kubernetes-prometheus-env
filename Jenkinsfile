@@ -14,11 +14,6 @@ pipeline {
                 )
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
-                    configs: 'prometheus/clusterRole.yml',
-                    enableConfigSubstitution: true
-                )
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
                     configs: 'prometheus/prometheus-config-map.yml',
                     enableConfigSubstitution: true
                 )
@@ -30,6 +25,11 @@ pipeline {
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'prometheus/prometheus-service.yml',
+                    enableConfigSubstitution: true
+                )
+                kubernetesDeploy(
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'prometheus/clusterRole.yml',
                     enableConfigSubstitution: true
                 )
             }
