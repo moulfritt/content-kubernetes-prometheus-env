@@ -1,8 +1,6 @@
 #!/usr/bin/env groovy
 delete_resource = false
 
-environment
-
 pipeline {
     agent any
     parameters {
