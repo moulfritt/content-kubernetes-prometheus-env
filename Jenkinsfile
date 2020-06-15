@@ -5,10 +5,7 @@ pipeline {
         DOCKER_IMAGE_NAME = "fbruslon/train-schedule"
     }
     stages {
-        stage('DeployToProduction') {
-            when {
-                branch 'master'
-            }
+        stage('Monitoring Create NameSpace') {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
