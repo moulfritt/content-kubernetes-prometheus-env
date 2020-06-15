@@ -10,13 +10,10 @@ pipeline {
     stages {
         stage('Deploy Prometheus') {
             steps {
-                script {
-                    if (expression {params.Action} == "Delete") {
+                if (expression {params.Action} == "Delete") {
                         delete_resource = true
                         echo "delete resource value: ${params.Action}"
-                    }
                 }
-
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'prometheus/namespaces.yml',
