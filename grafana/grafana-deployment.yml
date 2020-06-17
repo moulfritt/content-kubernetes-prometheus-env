@@ -20,9 +20,9 @@ spec:
       containers:
         - image: grafana/grafana:latest
           name: grafana
-          env:
-            - name: GF_SECURITY_ADMIN_PASSWORD
-              value: password
+#          env:
+#            - name: GF_SECURITY_ADMIN_PASSWORD
+#              value: password
           ports:
             - containerPort: 3000
           volumeMounts:
