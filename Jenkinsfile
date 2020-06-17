@@ -10,7 +10,7 @@ node {
                 echo "delete resource value: ${params.Action}"
         }
         echo "delete resource value: ${params.Action}"
-        kubernetesDeeploy(
+        kubernetesDeploy(
             kubeconfigId: 'kubeconfig',
             configs: 'prometheus/namespaces.yml',
             enableConfigSubstitution: true,
