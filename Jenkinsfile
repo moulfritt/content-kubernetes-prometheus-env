@@ -41,18 +41,18 @@ node {
             enableConfigSubstitution: true,
             deleteResource: "${delete_resource}"
         )
-        kubernetesDeploy(
-            kubeconfigId: 'kubeconfig',
-            configs: 'grafana/grafana-deployment.yml',
-            enableConfigSubstitution: true,
-            deleteResource: "${delete_resource}"
-        )
-        kubernetesDeploy(
-            kubeconfigId: 'kubeconfig',
-            configs: 'grafana/grafana-service.yml',
-            enableConfigSubstitution: true,
-            deleteResource: "${delete_resource}"
-        )
+//        kubernetesDeploy(
+//            kubeconfigId: 'kubeconfig',
+//            configs: 'grafana/grafana-deployment.yml',
+//            enableConfigSubstitution: true,
+//            deleteResource: "${delete_resource}"
+//        )
+//        kubernetesDeploy(
+//            kubeconfigId: 'kubeconfig',
+//            configs: 'grafana/grafana-service.yml',
+//            enableConfigSubstitution: true,
+//            deleteResource: "${delete_resource}"
+//        )
     }
 }
 
