@@ -4,18 +4,21 @@ node {
     parameters {
         choice(name: 'Action', choices: ['Deploy', 'Delete'], description: "What do you want ?")
     }
+    stage('Checkout SCM') {
+        checkout scm
+    }
     stage('Deploy Prometheus') {
         if (expression {params.Action} == "Delete") {
                 delete_resource = true
                 echo "delete resource value: ${params.Action}"
         }
         echo "delete resource value: ${params.Action}"
-//        kubernetesDeploy(
-//            kubeconfigId: 'kubeconfig',
-//            configs: 'prometheus/namespaces.yml',
-//            enableConfigSubstitution: true,
-//            deleteResource: "${delete_resource}"
-//        )
+        kubernetesDeploy(
+            kubeconfigId: 'kubeconfig',
+            configs: 'prometheus/namespaces.yml',
+            enableConfigSubstitution: true,
+            deleteResource: "${delete_resource}"
+        )
         kubernetesDeploy(
             kubeconfigId: 'kubeconfig',
             configs: 'prometheus/prometheus-config-map.yml',
