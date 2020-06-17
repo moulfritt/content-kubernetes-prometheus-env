@@ -2,7 +2,7 @@
 delete_resource = true
 node {
     parameters {
-        choice(name: 'Action', choices: ['Deploy', 'Delete'], description: "What do you want ?")
+        booleanParam(name: 'Delete', defaultValue: false, description: 'Delete ???')
     }
     stage('Checkout SCM') {
         checkout scm
