@@ -10,7 +10,7 @@ node {
     stage('Deploy Prometheus') {
         if (expression {params.Action} == "Delete") {
                 delete_resource = true
-                echo "delete resource value: ${params.Action}"
+                echo "delete resource value: ${delete_resource}"
         }
         echo "delete resource value: ${params.Action}"
         kubernetesDeploy(
