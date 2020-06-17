@@ -26,6 +26,7 @@ spec:
           terminationMessagePolicy: FallbackToLogsOnError
           ports:
             - containerPort: 3000
+          command: ["sh", "-c", "chown -R 472:472 /var/lib/grafana"]
           volumeMounts:
           - name: grafana-persistent-storage
             mountPath: /var
