@@ -1,7 +1,5 @@
 #!/usr/bin/env groovy
 delete_resource = false
-
-
 node {
     parameters {
         choice(name: 'Action', choices: ['Deploy', 'Delete'], description: "What do you want ?")
