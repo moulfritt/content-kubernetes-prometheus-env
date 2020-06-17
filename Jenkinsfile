@@ -11,6 +11,7 @@ node {
                 delete_resource = true
                 echo "delete resource value: ${params.Action}"
         }
+        echo "delete resource value: ${params.Action}"
         kubernetesDeploy(
             kubeconfigId: 'kubeconfig',
             configs: 'prometheus/namespaces.yml',
